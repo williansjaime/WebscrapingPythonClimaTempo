@@ -51,13 +51,27 @@ class MySQLDados():
                 self.dateTime
             )
             print(insert_dados_processo)
-            #sqlserver.execute(insert_dados_processo)
+            sqlserver.execute(insert_dados_processo)
             SQLServe.commit()            
             SQLServe.close()    
         except Exception as err:
             traceback.print_exc()
 
-
+def DB_Mysql():
+    Mysql = None
+    try:
+        hosts = "localhost"
+        username= "root"
+        password= "100415"
+        database= "DadosClimaTempo"
+        Mysql = mysql.connector.connect(
+            host=hosts,
+            user=username,
+            password=password,
+            database=database)
+        return Mysql        
+    except Exception as err:
+        traceback.print_exc(err)
 
 
 
